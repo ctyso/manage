@@ -1,4 +1,4 @@
-package com.manage;
+package com.manage.controller;
    
 public class manageController {
 
