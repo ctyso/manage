@@ -1,15 +1,13 @@
 package com.manage.user.controller;
 
+import com.manage.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.manage.user.service.IUserService;
-import com.manage.user.service.impl.UserService;
-
 
 @Controller
-@RequestMapping("/user/login/")
+@RequestMapping("/user/")
 public class UserController {
 	@Autowired IUserService userService;
 
