@@ -1,5 +1,7 @@
 package com.interceptor;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
 
 import javax.servlet.http.HttpServletRequest;
@@ -78,12 +80,21 @@ public class SpringInterceptor implements HandlerInterceptor {
     public void handlerJson( HttpServletRequest request, HttpServletResponse response, ModelAndView modelAndView ) {
         String json = modelAndView.getViewName();
         modelAndView.setView( new MappingJackson2JsonView() );
-        modelAndView.addObject( json );
+        modelAndView.clear();
 
         response.setCharacterEncoding( "utf-8" );
         response.setContentType( "text/html;charset=UTF-8" );
         response.setHeader( "pragma", "no-cache" );
         response.setHeader( "cache-control", "no-cache" );
+        PrintWriter writer = null;
+        try {
+            writer = response.getWriter();
+            writer.write( json );
+        } catch ( IOException e ) {
+            e.printStackTrace();
+        } finally {
+            if ( writer != null ) writer.close();
+        }
     }
 
     /**
