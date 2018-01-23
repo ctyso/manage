@@ -57,7 +57,6 @@ public class SpringInterceptor implements HandlerInterceptor {
     /**
      * 全局变量初始化
      * 
-     * @param config
      */
     private void initPath( HttpServletRequest request ) {
         String app_path = request.getContextPath();
