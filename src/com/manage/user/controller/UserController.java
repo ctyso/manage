@@ -33,6 +33,13 @@ public class UserController {
         return "login";
     }
 
+    @RequestMapping(value = "/form.htm")
+    @JspView
+    public String form( HttpServletRequest request, HttpServletResponse response ) {
+        userService.loginUser();
+        return "demo/form";
+    }
+
     /**
      * 数据表格响应格式 {code:...,count:...,data:...}
      */

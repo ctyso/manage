@@ -10,15 +10,63 @@
     <script src="${JS_PATH}/layui/layui.all.js"></script>
     <link rel="stylesheet" href="${JS_PATH}/layui/css/layui.css" media="all">
     <style>
-        .fifty-percent{
+        .panel{
+            margin-top: 3px;
+            height:860px;
+        }
+        .panel>div{
+            height:100%;
             display: inline-block;
-            width: 49%；
+        }
+        
+        .panel>div:FIRST-CHILD{
+            width:14%;
+            display: inline-block;
+            float: left;
+            background:#282B33 ;
+            margin:0 3px
+        }
+        
+        .clearfix{
+		    zoom:1;
+		}
+        
+        #content{
+            width: 84%;
+            box-sizing: border-box;
+        }
+        #content>div{
+            width:100%;
+            display: inline-block;
+        }
+        .toolbar{
+            padding:10px 10px 0 0;
+            text-align: right;
+        }
+        .clearfix{
+            
         }
     </style>
     
     <title>Document</title>
 </head>
 <body>
-    <jsp:include page="demo/datatable.jsp"></jsp:include>
+    <div>
+        <jsp:include page="demo/headnav.jsp"></jsp:include>
+    </div>
+    <div class="panel">
+		<div>
+		  <jsp:include page="demo/leftnva.jsp"></jsp:include>
+		</div>
+		<div id="content" class="clearfix">
+			<div style="height: 200px"></div>
+	        <div class="toolbar">
+	            <jsp:include page="demo/layer.jsp"></jsp:include>
+	        </div>
+	        <div>
+	           <jsp:include page="demo/datatable.jsp"></jsp:include>
+	        </div>
+		</div>
+    </div>
 </body>
 </html>
