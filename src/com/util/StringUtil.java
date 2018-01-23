@@ -1,8 +1,11 @@
 package com.util;
 
-
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class StringUtil {
     public static final String EMPTY = "";
@@ -10,8 +13,10 @@ public class StringUtil {
     /**
      * 将数组转化成字符串
      *
-     * @param split 分隔符
-     * @param quote 是否加单引号
+     * @param split
+     *            分隔符
+     * @param quote
+     *            是否加单引号
      */
     public static String join( Object[] list, String split, boolean quote ) {
         if ( list == null ) return "";
@@ -41,8 +46,10 @@ public class StringUtil {
     /**
      * 如果字符串为空或者没有内容，则替换成默认的字符串
      *
-     * @param str        要处理的字符串
-     * @param defaultStr 默认字符串
+     * @param str
+     *            要处理的字符串
+     * @param defaultStr
+     *            默认字符串
      *
      * @return 结果字符串
      */
@@ -64,8 +71,10 @@ public class StringUtil {
     /**
      * 如果字符串为空或者没有内容，则替换成默认的字符串
      *
-     * @param str        要处理的字符串
-     * @param defaultStr 默认字符串
+     * @param str
+     *            要处理的字符串
+     * @param defaultStr
+     *            默认字符串
      *
      * @return 结果字符串
      */
@@ -112,7 +121,7 @@ public class StringUtil {
      * 将"1:xxx,2:ppp,3:ddd"这样的定义转换为“KEY-VALUE”的列表
      */
     public static Map<String, String> split2Map( String src ) {
-        Map<String, String> m = new HashMap<String,String>();
+        Map<String, String> m = new HashMap<String, String>();
         if ( src == null ) return m;
         for ( String o : src.split( "," ) ) {
             if ( isBlank( o ) ) continue;
@@ -153,33 +162,28 @@ public class StringUtil {
     }
 
     /**
-     * 字符串不为 null 而且不为  "" 时返回 true
+     * 字符串不为 null 而且不为 "" 时返回 true
      */
     public static boolean notBlank( String str ) {
         return str != null && !"".equals( str.trim() );
     }
 
     public static boolean notBlank( String... strings ) {
-        if ( strings == null )
-            return false;
+        if ( strings == null ) return false;
         for ( String str : strings )
-            if ( str == null || "".equals( str.trim() ) )
-                return false;
+            if ( str == null || "".equals( str.trim() ) ) return false;
         return true;
     }
 
     public static boolean notNull( Object... paras ) {
-        if ( paras == null )
-            return false;
+        if ( paras == null ) return false;
         for ( Object obj : paras )
-            if ( obj == null )
-                return false;
+            if ( obj == null ) return false;
         return true;
     }
 
     public static String toCamelCase( String stringWithUnderline ) {
-        if ( stringWithUnderline.indexOf( '_' ) == -1 )
-            return stringWithUnderline;
+        if ( stringWithUnderline.indexOf( '_' ) == -1 ) return stringWithUnderline;
 
         stringWithUnderline = stringWithUnderline.toLowerCase();
         char[] fromArray = stringWithUnderline.toCharArray();
@@ -189,8 +193,7 @@ public class StringUtil {
             if ( fromArray[i] == '_' ) {
                 // 当前字符为下划线时，将指针后移一位，将紧随下划线后面一个字符转成大写并存放
                 i++;
-                if ( i < fromArray.length )
-                    toArray[j++] = Character.toUpperCase( fromArray[i] );
+                if ( i < fromArray.length ) toArray[j++] = Character.toUpperCase( fromArray[i] );
             } else {
                 toArray[j++] = fromArray[i];
             }
@@ -208,8 +211,7 @@ public class StringUtil {
     public static String join( String[] stringArray, String separator ) {
         StringBuilder sb = new StringBuilder();
         for ( int i = 0; i < stringArray.length; i++ ) {
-            if ( i > 0 )
-                sb.append( separator );
+            if ( i > 0 ) sb.append( separator );
             sb.append( stringArray[i] );
         }
         return sb.toString();
@@ -252,22 +254,13 @@ public class StringUtil {
 
     /* 转换为JS里面的字符串 */
     public static String encodeInString( String o ) {
-        return o == null ?
-                null :
-                o.replaceAll( "\\\\", "\\\\\\\\" )
-                 .replaceAll( "\\\"", "\\\\\"" )
-                 .replaceAll( "'", "\\\\\'" )
-                 .replace( "\n", "\\n" )
-                 .replace( "\r", "\\r" );
+        return o == null ? null : o.replaceAll( "\\\\", "\\\\\\\\" ).replaceAll( "\\\"", "\\\\\"" ).replaceAll( "'", "\\\\\'" ).replace( "\n", "\\n" ).replace( "\r", "\\r" );
 
     }
 
     /* 转换为JS里面的字符串 */
     public static String encodeJavascriptString( String o ) {
-        return o == null ?
-                null :
-                o.replaceAll( "\\\\", "\\\\\\\\" ).replaceAll( "\\\"", "\\\\\"" ).replace( "\n", "\\n" )
-                 .replace( "\r", "\\r" );
+        return o == null ? null : o.replaceAll( "\\\\", "\\\\\\\\" ).replaceAll( "\\\"", "\\\\\"" ).replace( "\n", "\\n" ).replace( "\r", "\\r" );
 
     }
 
@@ -298,8 +291,10 @@ public class StringUtil {
     /**
      * 字符串转化为浮点数
      *
-     * @param text 待转换字符串
-     * @param v    转换失败的默认值
+     * @param text
+     *            待转换字符串
+     * @param v
+     *            转换失败的默认值
      *
      * @return 结果
      */
@@ -314,8 +309,10 @@ public class StringUtil {
     /**
      * 日期转换函数，自动匹配格式，必须是年月日时分秒格式
      *
-     * @param str    字符串
-     * @param defval 默认值
+     * @param str
+     *            字符串
+     * @param defval
+     *            默认值
      *
      * @return 值
      */
@@ -354,9 +351,12 @@ public class StringUtil {
     /**
      * 判断字符串指定位置是否由特定字符串开始（忽略大小写）
      *
-     * @param text   要检查的字符串
-     * @param prefix 匹配头部的字符串
-     * @param begin  起始比较位置
+     * @param text
+     *            要检查的字符串
+     * @param prefix
+     *            匹配头部的字符串
+     * @param begin
+     *            起始比较位置
      *
      * @return TRUE = 符合，FALSE = 不符合
      */
@@ -365,8 +365,7 @@ public class StringUtil {
         int pc = prefix.length();
         if ( (begin < 0) || (begin > text.length() - pc) ) return false;
         while ( --pc >= 0 ) {
-            if ( Character.toUpperCase( text.charAt( to++ ) ) != Character.toUpperCase( prefix.charAt( po++ ) ) )
-                return false;
+            if ( Character.toUpperCase( text.charAt( to++ ) ) != Character.toUpperCase( prefix.charAt( po++ ) ) ) return false;
         }
         return true;
     }
@@ -374,8 +373,10 @@ public class StringUtil {
     /**
      * 判断字符串指定位置是否由特定字符串开始（忽略大小写）
      *
-     * @param text   要检查的字符串
-     * @param prefix 匹配头部的字符串
+     * @param text
+     *            要检查的字符串
+     * @param prefix
+     *            匹配头部的字符串
      *
      * @return TRUE = 符合，FALSE = 不符合
      */
@@ -393,26 +394,38 @@ public class StringUtil {
         for ( int i = 0; i < size; i++ ) {
             char c = input.charAt( i );
             switch ( c ) {
-                case '<':
-                    buffer.append( "&lt;" );
-                    break;
-                case '>':
-                    buffer.append( "&gt;" );
-                    break;
-                case '"':
-                    buffer.append( "&quot;" );
-                    break;
-                default:
-                    buffer.append( c );
+            case '<':
+                buffer.append( "&lt;" );
+                break;
+            case '>':
+                buffer.append( "&gt;" );
+                break;
+            case '"':
+                buffer.append( "&quot;" );
+                break;
+            default:
+                buffer.append( c );
             }
         }
         return buffer.toString();
     }
-    
+
     /**
      * 将字符串转换为带引号
      */
-    public static String encodeQuotationString( String input ){
-    	return "\'" + input + "\'";
+    public static String encodeQuotationString( String input ) {
+        return "\'" + input + "\'";
+    }
+
+    /**
+     * 字符串转换为整型
+     */
+    public static int toInt( String str ) {
+        int tmp = Integer.MIN_VALUE;
+        try {
+            tmp = Integer.parseInt( str );
+        } catch ( Exception localException ) {
+        }
+        return tmp;
     }
 }
