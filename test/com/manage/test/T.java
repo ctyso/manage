@@ -13,7 +13,8 @@ public class T extends BaseServiceTestRemote{
     private IUserService userService;
     
     @Test
-    public void  T(){
+    public void  T(){ 
+        
         System.out.print("Sdsdsdsd");
         userService.loginUser();
     }
