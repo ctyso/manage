@@ -1,4 +1,4 @@
-package com.manege.base;
+package com.manage.base;
 
 import java.io.Serializable;
 import java.util.Date;

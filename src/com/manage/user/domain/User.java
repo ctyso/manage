@@ -1,6 +1,6 @@
 package com.manage.user.domain;
 
-import com.manege.base.BaseObject;
+import com.manage.base.BaseObject;
 
 public class User extends BaseObject{
 	
