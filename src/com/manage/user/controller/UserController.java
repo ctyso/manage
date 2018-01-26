@@ -66,5 +66,11 @@ public class UserController {
     public Object layui( HttpServletRequest request, HttpServletResponse response ) {
         return "layuidemo";
     }
+    
+    @RequestMapping(value = "/index.htm")
+    @JspView
+    public Object index( HttpServletRequest request, HttpServletResponse response ) {
+        return "index";
+    }
 
 }
