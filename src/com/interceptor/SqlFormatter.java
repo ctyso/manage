@@ -7,8 +7,6 @@ import java.util.StringTokenizer;
 
 /**
  * sql格式化工具（原hibernate中BasicFormatterImpl源码）
- * @author: risun
- * @createDate: 2016年11月23日
  */
 public class SqlFormatter
 {
