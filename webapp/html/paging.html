@@ -12,8 +12,8 @@
 		<meta name="format-detection" content="telephone=no">
 
 		<link rel="stylesheet" href="../static/js/layui/css/layui.css" media="all" />
-		<link rel="stylesheet" href="../static/js/layui/css/module/global.css" media="all">
-		<link rel="stylesheet" href="../static/js/layui/css/module/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/js/layui/css/global.css" media="all">
+		<link rel="stylesheet" href="../static/js/layui/css/font-awesome.min.css">
 	</head>
 
 	<body>
@@ -59,13 +59,13 @@
 					<pre class="layui-code">
 						//示例代码
 						layui.config({
-    base: 'js/'
+    base: '../static/js/layui/lay/demo/'
 }).use(['paging', 'code'], function() {
     layui.code();
     var $ = layui.jquery,
         paging = layui.paging();
     paging.init({
-        url: 'datas/laytpl_laypage_data.json', //地址
+        url: '../datas/laytpl_laypage_data.json', //地址
         elem: '#con', //内容容器
         params: { //发送到服务端的参数
             t: Math.random(),
@@ -312,7 +312,7 @@
 		<script type="text/javascript" src="../static/js/layui/layui.js"></script>
 		<script>
 			layui.config({
-				base: 'js/'
+				base: '../static/js/layui/lay/demo/'
 			}).use(['paging', 'code'], function() {
 				layui.code();
 				var $ = layui.jquery,
@@ -320,7 +320,7 @@
 
                 paging.init({
                     openWait: true,
-                    url: 'datas/laytpl_laypage_data.json?v=' + new Date().getTime(), //地址
+                    url: '../datas/laytpl_laypage_data.json', //地址
 					elem: '#con', //内容容器
 					type:'post',
 					params: { //发送到服务端的参数
