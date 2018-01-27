@@ -23,13 +23,14 @@ import java.util.List;
 public class T    extends BaseServiceTestRemote{
     @Autowired
     private IUserService userService;
+
+
     
     @Test
     public void  Test(){
-        //System.out.print( T.class.getResource("/generatorConfig.xml").getFile());
-     //  System.out.println(System.getProperty("user.dir")+"/test/conf/generatorConfig.xml");
-   /*     System.out.print("Sdsdsdsd");
-        userService.loginUser();*/
+      
+        userService.loginUser();
+       
     }
 
     /**

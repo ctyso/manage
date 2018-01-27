@@ -13,5 +13,22 @@
 
         <!-- 开启驼峰命名转换:Table{create_time} -> Entity{createTime} -->
         <setting name="mapUnderscoreToCamelCase" value="true" />
+
+
+        <setting name="logImpl" value="SLF4J" /><!--强制指定MyBatis使用log4j作为日志日志框架，若不指定那么当部署到如Tomcat等应用容器时，会被容器设置为使用common-logging来记录日志-->
+        <setting name="cacheEnabled" value="false" /><!-- 全局映射器启用缓存 -->
+        <setting name="useGeneratedKeys" value="true" /><!-- 允许使用自定义的主键值(比如由程序生成的UUID 32位编码作为键值)，数据表的PK生成策略将被覆盖 -->
+        <setting name="defaultExecutorType" value="REUSE" />
+        <setting name="lazyLoadingEnabled" value="true"/><!-- 允许延迟加载 -->
+        <setting name="aggressiveLazyLoading" value="false"/><!-- 允许延迟加载 -->
+        <setting name="autoMappingBehavior" value="FULL" /><!-- 给予被嵌套的resultMap以字段-属性的映射支持 -->
+        <setting name="multipleResultSetsEnabled" value="true" /><!-- 对于未知的SQL查询，允许返回不同的结果集以达到通用的效果 -->
+        <setting name="defaultExecutorType" value="BATCH" /><!-- 对于批量更新操作缓存SQL以提高性能  -->
     </settings>
+
+    <plugins>
+        <plugin interceptor="com.interceptor.SqlInterceptor" />
+        <plugin interceptor="com.interceptor.MybatisInterceptor" />
+        <plugin interceptor="com.interceptor.PageInterceptor" />
+    </plugins>
 </configuration>
