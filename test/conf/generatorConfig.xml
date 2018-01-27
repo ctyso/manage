@@ -11,7 +11,12 @@
     <properties resource="jdbc.properties" />
     <context id="sqlserverTables" targetRuntime="MyBatis3">
         <!-- 生成的pojo，将implements Serializable-->
-        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example"/>
+            <property name="replaceString" value="Condition"/>
+        </plugin>
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="true" />
@@ -40,6 +45,8 @@
         <javaModelGenerator targetPackage="com.manage"
                             targetProject="./src">
             <!--<property name="rootClass" value="com.ssit.framework.mybatis.entity.BaseEntity"/>-->
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
             <property name="javaFileEncoding" value="UTF-8"/>
         </javaModelGenerator>
         <!-- 配置自动生成的Mappper.xml映射的保存路径与其它参数 -->

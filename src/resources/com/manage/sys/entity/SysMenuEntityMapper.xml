@@ -83,7 +83,7 @@
     is_func_menu, menu_uri, menu_style_nm, is_valid, remark, insert_user, insert_time, 
     update_user, update_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.manage.sys.entity.SysMenuEntityExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.manage.sys.entity.SysMenuEntityCondition" >
     select
     <if test="distinct" >
       distinct
@@ -107,7 +107,7 @@
     delete from t_sys_menu
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.manage.sys.entity.SysMenuEntityExample" >
+  <delete id="deleteByExample" parameterType="com.manage.sys.entity.SysMenuEntityCondition" >
     delete from t_sys_menu
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -236,7 +236,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.manage.sys.entity.SysMenuEntityExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.manage.sys.entity.SysMenuEntityCondition" resultType="java.lang.Integer" >
     select count(*) from t_sys_menu
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />

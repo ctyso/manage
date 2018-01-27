@@ -1,14 +1,14 @@
 package com.manage.sys.entity;
 
 import com.manage.sys.entity.SysMenuEntity;
-import com.manage.sys.entity.SysMenuEntityExample;
+import com.manage.sys.entity.SysMenuEntityCondition;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface SysMenuEntityMapper {
-    int countByExample(SysMenuEntityExample example);
+    int countByExample(SysMenuEntityCondition example);
 
-    int deleteByExample(SysMenuEntityExample example);
+    int deleteByExample(SysMenuEntityCondition example);
 
     int deleteByPrimaryKey(String id);
 
@@ -16,13 +16,13 @@ public interface SysMenuEntityMapper {
 
     int insertSelective(SysMenuEntity record);
 
-    List<SysMenuEntity> selectByExample(SysMenuEntityExample example);
+    List<SysMenuEntity> selectByExample(SysMenuEntityCondition example);
 
     SysMenuEntity selectByPrimaryKey(String id);
 
-    int updateByExampleSelective(@Param("record") SysMenuEntity record, @Param("example") SysMenuEntityExample example);
+    int updateByExampleSelective(@Param("record") SysMenuEntity record, @Param("example") SysMenuEntityCondition example);
 
-    int updateByExample(@Param("record") SysMenuEntity record, @Param("example") SysMenuEntityExample example);
+    int updateByExample(@Param("record") SysMenuEntity record, @Param("example") SysMenuEntityCondition example);
 
     int updateByPrimaryKeySelective(SysMenuEntity record);
 

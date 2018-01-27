@@ -45,7 +45,7 @@ public class SysMenuEntity implements Serializable {
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = id == null ? null : id.trim();
     }
 
     public String getMenuEncrypt() {
@@ -53,7 +53,7 @@ public class SysMenuEntity implements Serializable {
     }
 
     public void setMenuEncrypt(String menuEncrypt) {
-        this.menuEncrypt = menuEncrypt;
+        this.menuEncrypt = menuEncrypt == null ? null : menuEncrypt.trim();
     }
 
     public String getMenuNm() {
@@ -61,7 +61,7 @@ public class SysMenuEntity implements Serializable {
     }
 
     public void setMenuNm(String menuNm) {
-        this.menuNm = menuNm;
+        this.menuNm = menuNm == null ? null : menuNm.trim();
     }
 
     public String getSupMenuId() {
@@ -69,7 +69,7 @@ public class SysMenuEntity implements Serializable {
     }
 
     public void setSupMenuId(String supMenuId) {
-        this.supMenuId = supMenuId;
+        this.supMenuId = supMenuId == null ? null : supMenuId.trim();
     }
 
     public Integer getPathIncVal() {
@@ -85,7 +85,7 @@ public class SysMenuEntity implements Serializable {
     }
 
     public void setMenuPath(String menuPath) {
-        this.menuPath = menuPath;
+        this.menuPath = menuPath == null ? null : menuPath.trim();
     }
 
     public Short getLevelNum() {
@@ -109,7 +109,7 @@ public class SysMenuEntity implements Serializable {
     }
 
     public void setIsFuncMenu(String isFuncMenu) {
-        this.isFuncMenu = isFuncMenu;
+        this.isFuncMenu = isFuncMenu == null ? null : isFuncMenu.trim();
     }
 
     public String getMenuUri() {
@@ -117,7 +117,7 @@ public class SysMenuEntity implements Serializable {
     }
 
     public void setMenuUri(String menuUri) {
-        this.menuUri = menuUri;
+        this.menuUri = menuUri == null ? null : menuUri.trim();
     }
 
     public String getMenuStyleNm() {
@@ -125,7 +125,7 @@ public class SysMenuEntity implements Serializable {
     }
 
     public void setMenuStyleNm(String menuStyleNm) {
-        this.menuStyleNm = menuStyleNm;
+        this.menuStyleNm = menuStyleNm == null ? null : menuStyleNm.trim();
     }
 
     public String getIsValid() {
@@ -133,7 +133,7 @@ public class SysMenuEntity implements Serializable {
     }
 
     public void setIsValid(String isValid) {
-        this.isValid = isValid;
+        this.isValid = isValid == null ? null : isValid.trim();
     }
 
     public String getRemark() {
@@ -141,7 +141,7 @@ public class SysMenuEntity implements Serializable {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark;
+        this.remark = remark == null ? null : remark.trim();
     }
 
     public String getInsertUser() {
@@ -149,7 +149,7 @@ public class SysMenuEntity implements Serializable {
     }
 
     public void setInsertUser(String insertUser) {
-        this.insertUser = insertUser;
+        this.insertUser = insertUser == null ? null : insertUser.trim();
     }
 
     public Date getInsertTime() {
@@ -165,7 +165,7 @@ public class SysMenuEntity implements Serializable {
     }
 
     public void setUpdateUser(String updateUser) {
-        this.updateUser = updateUser;
+        this.updateUser = updateUser == null ? null : updateUser.trim();
     }
 
     public Date getUpdateTime() {
