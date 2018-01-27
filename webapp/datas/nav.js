@@ -5,23 +5,23 @@ var navs = [{
 	"children": [{
 		"title": "按钮",
 		"icon": "&#xe641;",
-		"href": "button.html"
+		"href": "../../html/button.html"
 	}, {
 		"title": "表单",
 		"icon": "&#xe63c;",
-		"href": "form.html"
+		"href": "../../html/form.html"
 	}, {
 		"title": "表格",
 		"icon": "&#xe63c;",
-		"href": "table.html"
+		"href": "../../html/table.html"
 	}, {
 		"title": "导航",
 		"icon": "&#xe609;",
-		"href": "nav.html"
+		"href": "../../html/nav.html"
 	}, {
 		"title": "辅助性元素",
 		"icon": "&#xe60c;",
-		"href": "auxiliar.html"
+		"href": "../../html/auxiliar.html"
 	}]
 }, {
 	"title": "组件",
@@ -30,19 +30,19 @@ var navs = [{
 	"children": [{
 		"title": "BTable",
 		"icon": "fa-table",
-		"href": "btable.html"
+		"href": "../../html/btable.html"
 	}, {
 		"title": "Navbar组件",
 		"icon": "fa-navicon",
-		"href": "navbar.html"
+		"href": "../../html/navbar.html"
 	}, {
 		"title": "Tab组件",
 		"icon": "&#xe62a;",
-		"href": "tab.html"
+		"href": "../../html/tab.html"
 	}, {
 		"title": "Laytpl+Laypage",
 		"icon": "&#xe628;",
-		"href": "paging.html"
+		"href": "../../html/paging.html"
 	}]
 }, {
 	"title": "第三方组件",
@@ -51,7 +51,7 @@ var navs = [{
 	"children": [{
 		"title": "iCheck组件",
 		"icon": "fa-check-square-o",
-		"href": "icheck.html"
+		"href": "../../html/icheck.html"
 	}]
 }, {
 	"title": "地址本",
@@ -88,6 +88,6 @@ var navs = [{
 	"children": [{
 		"title": "子窗体中打开选项卡",
 		"icon": "fa-github",
-		"href": "cop.html"
+		"href": "../../html/cop.html"
 	}]
 }];
