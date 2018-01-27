@@ -1,21 +1,22 @@
 package com.manage.user.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.annotation.Json;
 import com.annotation.JspView;
 import com.manage.base.layui.bean.DataTable;
 import com.manage.base.layui.bean.PageInfo;
 import com.manage.user.service.IUserService;
-import com.util.JsonUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/user/login/")
@@ -58,7 +59,7 @@ public class UserController {
         map.put( "classify", "vegetables" );
         map.put( "wealth", "0" );
         list.add( map );
-        return JsonUtil.toJson( new DataTable( list ) );
+        return new DataTable( list );
     }
 
     @RequestMapping(value = "/layui.htm")
@@ -66,7 +67,7 @@ public class UserController {
     public Object layui( HttpServletRequest request, HttpServletResponse response ) {
         return "layuidemo";
     }
-    
+
     @RequestMapping(value = "/index.htm")
     @JspView
     public Object index( HttpServletRequest request, HttpServletResponse response ) {

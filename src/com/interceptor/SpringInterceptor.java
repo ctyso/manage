@@ -3,10 +3,13 @@ package com.interceptor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.ui.ModelMap;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,6 +17,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.annotation.Json;
 import com.annotation.JspView;
+import com.util.JsonUtil;
 import com.util.ObjectUtil;
 
 /**
@@ -77,7 +81,15 @@ public class SpringInterceptor implements HandlerInterceptor {
      * 处理Json返回
      */
     public void handlerJson( HttpServletRequest request, HttpServletResponse response, ModelAndView modelAndView ) {
-        String json = modelAndView.getViewName();
+        // 返回值集合
+        List<Object> returnList = new ArrayList<Object>();
+        // 返回值map
+        ModelMap returnMap = modelAndView.getModelMap();
+        // 转换map为list
+        for ( String key : returnMap.keySet() )
+            returnList.add( returnMap.get( key ) );
+        // 当找不到返回参数时就以返回的字符串为参数
+        if ( returnList.size() == 0 ) returnList.add( modelAndView.getViewName() );
         modelAndView.setView( new MappingJackson2JsonView() );
         modelAndView.clear();
 
@@ -88,7 +100,7 @@ public class SpringInterceptor implements HandlerInterceptor {
         PrintWriter writer = null;
         try {
             writer = response.getWriter();
-            writer.write( json );
+            writer.write( JsonUtil.toJson( returnList.get( 0 ) ) );
         } catch ( IOException e ) {
             e.printStackTrace();
         } finally {
