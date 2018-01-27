@@ -12,8 +12,8 @@
 		<meta name="format-detection" content="telephone=no">
 
 		<link rel="stylesheet" href="../static/js/layui/css/layui.css" media="all" />
-		<link rel="stylesheet" href="../static/js/layui/css/module/global.css" media="all">
-		<link rel="stylesheet" href="../static/js/layui/css/module/font-awesome.min.css">
+		<link rel="stylesheet" href="../static/js/layui/css/global.css" media="all">
+		<link rel="stylesheet" href="../static/js/layui/css/font-awesome.min.css">
 	</head>
 
 	<body>
@@ -30,7 +30,7 @@
 						&lt;div id=&quot;nav&quot; lay-filter=&quot;demo&quot;&gt;&lt;/div&gt;
 						//js
 						layui.config({
-						    base: 'js/'
+						    base: '../static/js/layui/lay/demo/'
 						}).use('navbar', function() {
 						    var navbar = layui.navbar();
 						    navbar.set({
@@ -179,11 +179,11 @@
 										<pre class="layui-code">
 										//栗子一
 										layui.config({
-										    base:'js/'
+										    base: '../static/js/layui/lay/demo/'
 										}).use('navbar',function(){
 										    var navbar = layui.navbar({
 										        elem: '#nav',
-										        url: 'datas/nav.json'
+										        url: '../datas/nav.json'
 										    });
 										    //这是调用navbar组件初始化的情况，如果设置了参数，那么可以直接使用render方法渲染
 										    navbar.render();
@@ -191,13 +191,13 @@
 										});
 										//栗子二
 										layui.config({
-										    base:'js/'
+										    base: '../static/js/layui/lay/demo/'
 										}).use('navbar',function(){
 										    var navbar = layui.navbar();
 										    //navbar组件没有被初始化的情况，需要调用set方法设置一些参数
 										    navbar.set({
 										        elem: '#nav',
-										        url: 'datas/nav.json'
+										        url: '../datas/nav.json'
 										    });
 										    navbar.render();
 										    //Do something...
@@ -312,7 +312,7 @@
 		<script type="text/javascript" src="../static/js/layui/layui.js"></script>
 		<script>
 			layui.config({
-				base: 'js/'
+				base: '../static/js/layui/lay/demo/'
 			}).use(['navbar', 'code'], function() {
 				var navbar = layui.navbar(),
 					layer = parent.layer === undefined ? layui.layer : parent.layer,
@@ -320,7 +320,7 @@
 				layui.code();
 				navbar.set({
 					elem: '#nav',
-					url: 'datas/nav.json',
+					url: '../datas/nav.json',
 					cached: true
 				});
 				navbar.render();

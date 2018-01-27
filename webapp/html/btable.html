@@ -12,7 +12,7 @@
     <meta name="format-detection" content="telephone=no">
 
     <link rel="stylesheet" href="../static/js/layui/css/layui.css" media="all" />
-    <link rel="stylesheet" href="../static/js/layui/css/module/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/js/layui/css/font-awesome.min.css">
     <link rel="stylesheet" href="../static/js/layui/css/btable.css" />
 </head>
 
@@ -39,19 +39,18 @@
     <script type="text/javascript" src="../static/js/layui/layui.js"></script>
     <script>
         layui.config({
-            base: 'js/',
-            v: new Date().getTime()
+            base: '../static/js/layui/lay/demo/'
         }).use(['btable', 'form'], function () {
             var btable = layui.btable(),
                 $ = layui.jquery,
                 layerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
                 layer = layui.layer,//获取当前窗口的layer对象;
-                form = layui.form();
+                form = layui.form;
 
             btable.set({
                 openWait: true,//开启等待框
                 elem: '#content',
-                url: 'datas/btable_data.json', //数据源地址
+                url: '../datas/btable_data.json', //数据源地址
                 pageSize: 3,//页大小
                 params: {//额外的请求参数
                     t: new Date().getTime()
