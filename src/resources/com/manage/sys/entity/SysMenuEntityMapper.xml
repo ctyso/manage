@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.manage.sys.entity.SysMenuEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.manage.sys.entity.SysMenuEntity" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="menu_encrypt" property="menuEncrypt" jdbcType="VARCHAR" />
+    <result column="menu_nm" property="menuNm" jdbcType="VARCHAR" />
+    <result column="sup_menu_id" property="supMenuId" jdbcType="VARCHAR" />
+    <result column="path_inc_val" property="pathIncVal" jdbcType="INTEGER" />
+    <result column="menu_path" property="menuPath" jdbcType="VARCHAR" />
+    <result column="level_num" property="levelNum" jdbcType="SMALLINT" />
+    <result column="order_no" property="orderNo" jdbcType="INTEGER" />
+    <result column="is_func_menu" property="isFuncMenu" jdbcType="VARCHAR" />
+    <result column="menu_uri" property="menuUri" jdbcType="VARCHAR" />
+    <result column="menu_style_nm" property="menuStyleNm" jdbcType="VARCHAR" />
+    <result column="is_valid" property="isValid" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="insert_user" property="insertUser" jdbcType="VARCHAR" />
+    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, menu_encrypt, menu_nm, sup_menu_id, path_inc_val, menu_path, level_num, order_no, 
+    is_func_menu, menu_uri, menu_style_nm, is_valid, remark, insert_user, insert_time, 
+    update_user, update_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.manage.sys.entity.SysMenuEntityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_sys_menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_sys_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.manage.sys.entity.SysMenuEntityExample" >
+    delete from t_sys_menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.manage.sys.entity.SysMenuEntity" >
+    insert into t_sys_menu (id, menu_encrypt, menu_nm, 
+      sup_menu_id, path_inc_val, menu_path, 
+      level_num, order_no, is_func_menu, 
+      menu_uri, menu_style_nm, is_valid, 
+      remark, insert_user, insert_time, 
+      update_user, update_time)
+    values (#{id,jdbcType=VARCHAR}, #{menuEncrypt,jdbcType=VARCHAR}, #{menuNm,jdbcType=VARCHAR}, 
+      #{supMenuId,jdbcType=VARCHAR}, #{pathIncVal,jdbcType=INTEGER}, #{menuPath,jdbcType=VARCHAR}, 
+      #{levelNum,jdbcType=SMALLINT}, #{orderNo,jdbcType=INTEGER}, #{isFuncMenu,jdbcType=VARCHAR}, 
+      #{menuUri,jdbcType=VARCHAR}, #{menuStyleNm,jdbcType=VARCHAR}, #{isValid,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{insertUser,jdbcType=VARCHAR}, #{insertTime,jdbcType=TIMESTAMP}, 
+      #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.manage.sys.entity.SysMenuEntity" >
+    insert into t_sys_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="menuEncrypt != null" >
+        menu_encrypt,
+      </if>
+      <if test="menuNm != null" >
+        menu_nm,
+      </if>
+      <if test="supMenuId != null" >
+        sup_menu_id,
+      </if>
+      <if test="pathIncVal != null" >
+        path_inc_val,
+      </if>
+      <if test="menuPath != null" >
+        menu_path,
+      </if>
+      <if test="levelNum != null" >
+        level_num,
+      </if>
+      <if test="orderNo != null" >
+        order_no,
+      </if>
+      <if test="isFuncMenu != null" >
+        is_func_menu,
+      </if>
+      <if test="menuUri != null" >
+        menu_uri,
+      </if>
+      <if test="menuStyleNm != null" >
+        menu_style_nm,
+      </if>
+      <if test="isValid != null" >
+        is_valid,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="insertUser != null" >
+        insert_user,
+      </if>
+      <if test="insertTime != null" >
+        insert_time,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="menuEncrypt != null" >
+        #{menuEncrypt,jdbcType=VARCHAR},
+      </if>
+      <if test="menuNm != null" >
+        #{menuNm,jdbcType=VARCHAR},
+      </if>
+      <if test="supMenuId != null" >
+        #{supMenuId,jdbcType=VARCHAR},
+      </if>
+      <if test="pathIncVal != null" >
+        #{pathIncVal,jdbcType=INTEGER},
+      </if>
+      <if test="menuPath != null" >
+        #{menuPath,jdbcType=VARCHAR},
+      </if>
+      <if test="levelNum != null" >
+        #{levelNum,jdbcType=SMALLINT},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=INTEGER},
+      </if>
+      <if test="isFuncMenu != null" >
+        #{isFuncMenu,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUri != null" >
+        #{menuUri,jdbcType=VARCHAR},
+      </if>
+      <if test="menuStyleNm != null" >
+        #{menuStyleNm,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null" >
+        #{isValid,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="insertUser != null" >
+        #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.manage.sys.entity.SysMenuEntityExample" resultType="java.lang.Integer" >
+    select count(*) from t_sys_menu
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_sys_menu
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuEncrypt != null" >
+        menu_encrypt = #{record.menuEncrypt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuNm != null" >
+        menu_nm = #{record.menuNm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.supMenuId != null" >
+        sup_menu_id = #{record.supMenuId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pathIncVal != null" >
+        path_inc_val = #{record.pathIncVal,jdbcType=INTEGER},
+      </if>
+      <if test="record.menuPath != null" >
+        menu_path = #{record.menuPath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.levelNum != null" >
+        level_num = #{record.levelNum,jdbcType=SMALLINT},
+      </if>
+      <if test="record.orderNo != null" >
+        order_no = #{record.orderNo,jdbcType=INTEGER},
+      </if>
+      <if test="record.isFuncMenu != null" >
+        is_func_menu = #{record.isFuncMenu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuUri != null" >
+        menu_uri = #{record.menuUri,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuStyleNm != null" >
+        menu_style_nm = #{record.menuStyleNm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isValid != null" >
+        is_valid = #{record.isValid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insertUser != null" >
+        insert_user = #{record.insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insertTime != null" >
+        insert_time = #{record.insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUser != null" >
+        update_user = #{record.updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_sys_menu
+    set id = #{record.id,jdbcType=VARCHAR},
+      menu_encrypt = #{record.menuEncrypt,jdbcType=VARCHAR},
+      menu_nm = #{record.menuNm,jdbcType=VARCHAR},
+      sup_menu_id = #{record.supMenuId,jdbcType=VARCHAR},
+      path_inc_val = #{record.pathIncVal,jdbcType=INTEGER},
+      menu_path = #{record.menuPath,jdbcType=VARCHAR},
+      level_num = #{record.levelNum,jdbcType=SMALLINT},
+      order_no = #{record.orderNo,jdbcType=INTEGER},
+      is_func_menu = #{record.isFuncMenu,jdbcType=VARCHAR},
+      menu_uri = #{record.menuUri,jdbcType=VARCHAR},
+      menu_style_nm = #{record.menuStyleNm,jdbcType=VARCHAR},
+      is_valid = #{record.isValid,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      insert_user = #{record.insertUser,jdbcType=VARCHAR},
+      insert_time = #{record.insertTime,jdbcType=TIMESTAMP},
+      update_user = #{record.updateUser,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.manage.sys.entity.SysMenuEntity" >
+    update t_sys_menu
+    <set >
+      <if test="menuEncrypt != null" >
+        menu_encrypt = #{menuEncrypt,jdbcType=VARCHAR},
+      </if>
+      <if test="menuNm != null" >
+        menu_nm = #{menuNm,jdbcType=VARCHAR},
+      </if>
+      <if test="supMenuId != null" >
+        sup_menu_id = #{supMenuId,jdbcType=VARCHAR},
+      </if>
+      <if test="pathIncVal != null" >
+        path_inc_val = #{pathIncVal,jdbcType=INTEGER},
+      </if>
+      <if test="menuPath != null" >
+        menu_path = #{menuPath,jdbcType=VARCHAR},
+      </if>
+      <if test="levelNum != null" >
+        level_num = #{levelNum,jdbcType=SMALLINT},
+      </if>
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=INTEGER},
+      </if>
+      <if test="isFuncMenu != null" >
+        is_func_menu = #{isFuncMenu,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUri != null" >
+        menu_uri = #{menuUri,jdbcType=VARCHAR},
+      </if>
+      <if test="menuStyleNm != null" >
+        menu_style_nm = #{menuStyleNm,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="insertUser != null" >
+        insert_user = #{insertUser,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.manage.sys.entity.SysMenuEntity" >
+    update t_sys_menu
+    set menu_encrypt = #{menuEncrypt,jdbcType=VARCHAR},
+      menu_nm = #{menuNm,jdbcType=VARCHAR},
+      sup_menu_id = #{supMenuId,jdbcType=VARCHAR},
+      path_inc_val = #{pathIncVal,jdbcType=INTEGER},
+      menu_path = #{menuPath,jdbcType=VARCHAR},
+      level_num = #{levelNum,jdbcType=SMALLINT},
+      order_no = #{orderNo,jdbcType=INTEGER},
+      is_func_menu = #{isFuncMenu,jdbcType=VARCHAR},
+      menu_uri = #{menuUri,jdbcType=VARCHAR},
+      menu_style_nm = #{menuStyleNm,jdbcType=VARCHAR},
+      is_valid = #{isValid,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      insert_user = #{insertUser,jdbcType=VARCHAR},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

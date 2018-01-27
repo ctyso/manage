@@ -40,17 +40,26 @@
         <!-- 配置MyBaties全局配置文件:mybatis-config.xml -->
         <property name="configLocation" value="classpath:../config/mybatis-config.xml" />
         <!-- 自动扫描mapping.xml文件 -->
-        <property name="mapperLocations" value="classpath:com/manage/*Mapper.xml"></property>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:resources/com/**/*Mapper.xml</value>
+                <!--  <value>classpath*:com/ssit/framework/**/*Mapper.xml</value>-->
+            </list>
+        </property>
     </bean>
 
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.lcw.dao" />
+        <property name="basePackage" value="com.manage.test"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>
-  
 
+    <!-- 用于深入控制、批量操作 -->
+    <bean id="mySqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+    
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

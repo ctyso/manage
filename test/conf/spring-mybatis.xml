@@ -13,7 +13,7 @@
     <!-- 引入配置文件 -->
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:../config/jdbc.properties" />
+        <property name="location" value="classpath:/jdbc.properties" />
     </bean>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -38,18 +38,38 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <!-- 配置MyBaties全局配置文件:mybatis-config.xml -->
-        <property name="configLocation" value="classpath:../config/mybatis-config.xml" />
+        <property name="configLocation" value="conf/mybatis-config.xml" />
         <!-- 自动扫描mapping.xml文件 -->
-        <property name="mapperLocations" value="classpath:com/manage/*Mapper.xml"></property>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:resources/com/**/*Mapper.xml</value>
+              <!--  <value>classpath*:com/ssit/framework/**/*Mapper.xml</value>-->
+            </list>
+        </property>
+        
     </bean>
 
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.lcw.dao" />
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+        <property name="basePackage" value="com.manage.test"/>
+       <!-- <property name="basePackage" value="com.installment.**.dao,com.sinlff.**.dao,com.rule.**.dao" />-->
+        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>-->
     </bean>
-  
+
+ <!--   <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="basePackage" value="com.ssit.huntsman,com.ssit.framework.batch"/>
+   &lt;!&ndash; <property name="markerInterface" value="com.ssit.framework.mybatis.mapper.BaseMapper"/>
+    <property name="annotationClass" value="com.ssit.framework.mybatis.annotation.Dal"/>&ndash;&gt;
+    <property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
+<!--</bean>-->
+    
+
+    <!-- 用于深入控制、批量操作 -->
+    <bean id="mySqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+ 
 
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <bean id="transactionManager"

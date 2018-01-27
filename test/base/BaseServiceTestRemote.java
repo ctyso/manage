@@ -11,7 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"../conf/spring-mvc.xml"})
+@ContextConfiguration({"../conf/spring-mvc.xml","../conf/spring-mybatis.xml"})
+
 public class BaseServiceTestRemote  {
 	@Before
 	public void init(){
