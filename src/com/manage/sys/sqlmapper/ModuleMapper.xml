@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- sql 映射文件  -->
+
+<mapper namespace="com.manage.sys.sqlmapper.ModuleMapper">
+	<!-- 新增 -->
+	<insert id="addUser" parameterType="map">
+		insert into user_login (phone_mobile,login_password,user_code,register_time) 
+		values (#{phone_mobile},#{login_password},#{user_code},#{register_time})
+	</insert>
+	<!-- 获取所有模块信息 -->
+	<select id="findAllByParams" parameterType="map" resultType="com.manage.sys.entity.Module">
+		select * from s_module
+	</select>
+	<!-- 获取某个父节点下的所有模块信息 -->
+	<select id="findAll" resultType="com.manage.sys.entity.Module">
+		select * from s_module
+	</select>
+</mapper>
+
+<!-- <mapper namespace="com.user.dao">
+
+	用户注册的判断
+	<insert id="addUser" parameterType="map">
+		insert into user_login (phone_mobile,login_password,register_time,user_code) values(#{phone_mobile},#{login_password},#{register_time},#{user_code})
+	</insert>
+	
+	用户名唯一性的判断
+	<select id="judgeUser" parameterType="String" resultType="com.register.vo.User">
+		select phone_mobile from user_login where phone_mobile=#{phone_mobile}
+	</select>
+	
+	用户登录的判断返回一个user给service处理
+	<select id="userLogin" parameterType="map" resultType="com.register.vo.User">
+		select phone_mobile,login_password from user_login where phone_mobile=#{phone_mobile} and login_password=#{login_password}
+	</select>
+</mapper> -->
