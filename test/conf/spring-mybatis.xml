@@ -43,7 +43,7 @@
         <property name="mapperLocations">
             <list>
                 <value>classpath:resources/com/**/*Mapper.xml</value>
-              <!--  <value>classpath*:com/ssit/framework/**/*Mapper.xml</value>-->
+                <value>classpath:com/manage/**/sqlmapper/*.xml</value>
             </list>
         </property>
         
