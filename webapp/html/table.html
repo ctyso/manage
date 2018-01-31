@@ -211,6 +211,21 @@
 
 				$('#import').on('click', function() {
 					var that = this;
+					$.ajax({
+			           type: "POST",
+			           url: "../Module/findAll.htm",
+			           async: false, //_config.async,
+			           dataType: 'json',
+			           success: function (result, status, xhr) {
+			           		alert(result);
+			           },
+			           error: function (xhr, status, error) {
+			               layer.tips('请求出错了', that, { tips: [1, 'white'] });
+			           },
+			           complete: function (xhr, status) {
+			               that.config.elem = $container;
+			           }
+			     	});
 					var index = layer.tips('只想提示地精准些', that, { tips: [1, 'white'] });
 					$('#layui-layer' + index).children('div.layui-layer-content').css('color', '#000000');
 				});

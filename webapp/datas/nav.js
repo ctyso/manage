@@ -90,4 +90,9 @@ var navs = [{
 		"icon": "fa-github",
 		"href": "../../html/cop.html"
 	}]
+}, {
+	"title": "菜单管理",
+	"icon": "fa-stop-circle",
+	"href": path+"/html/module.jsp",
+	"spread": false
 }];

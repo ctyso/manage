@@ -85,5 +85,10 @@
 		"icon": "fa-stop-circle",
 		"href": "https://www.baidu.com",
 		"spread": false
+	}, {
+		"title": "菜单管理",
+		"icon": "fa-stop-circle",
+		"href": "../views/module.jsp",
+		"spread": false
 	}
 ]
