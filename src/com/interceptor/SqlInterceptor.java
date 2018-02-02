@@ -5,6 +5,8 @@
 
 package com.interceptor;
 
+import java.util.Properties;
+
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.plugin.Interceptor;
@@ -17,24 +19,16 @@ import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Properties;
-
-@Intercepts({    @Signature(
-        type = Executor.class,
-        method = "query",
-        args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}
-),     @Signature(
-        type = Executor.class,
-        method = "update",
-        args = {MappedStatement.class, Object.class}
-)})
+@Intercepts({ @Signature(type = Executor.class, method = "query", args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class }),
+        @Signature(type = Executor.class, method = "update", args = { MappedStatement.class, Object.class }) })
 public class SqlInterceptor implements Interceptor {
-    private static Logger sqlLogger = LoggerFactory.getLogger("sqlLogger");
+    private static Logger sqlLogger = LoggerFactory.getLogger( "sqlLogger" );
 
     public SqlInterceptor() {
     }
 
-    public Object intercept(Invocation invocation) throws Throwable {
+    @Override
+    public Object intercept( Invocation invocation ) throws Throwable {
         long start = System.currentTimeMillis();
         boolean var19 = false;
 
@@ -44,38 +38,40 @@ public class SqlInterceptor implements Interceptor {
             Object e = invocation.proceed();
             var5 = e;
             var19 = false;
-        } catch (Throwable var20) {
+        } catch ( Throwable var20 ) {
             throw var20;
         } finally {
-            if(var19) {
+            if ( var19 ) {
                 long end1 = System.currentTimeMillis();
                 long gap1 = end1 - start;
-                String statementId1 = this.getStatementId(invocation);
-                sqlLogger.debug(statementId1 + " " + gap1);
+                String statementId1 = this.getStatementId( invocation );
+                sqlLogger.debug( statementId1 + " " + gap1 );
             }
         }
 
         long end = System.currentTimeMillis();
         long gap = end - start;
-        String statementId = this.getStatementId(invocation);
-        sqlLogger.debug(statementId + " " + gap);
+        String statementId = this.getStatementId( invocation );
+        sqlLogger.debug( statementId + " " + gap );
         return var5;
     }
 
-    private String getStatementId(Invocation invocation) {
+    private String getStatementId( Invocation invocation ) {
         Object[] args = invocation.getArgs();
-        if(args.length > 0 && args[0] instanceof MappedStatement) {
-            MappedStatement statement = (MappedStatement)args[0];
+        if ( args.length > 0 && args[0] instanceof MappedStatement ) {
+            MappedStatement statement = (MappedStatement) args[0];
             return statement.getId();
         } else {
             return null;
         }
     }
 
-    public Object plugin(Object target) {
-        return Plugin.wrap(target, this);
+    @Override
+    public Object plugin( Object target ) {
+        return Plugin.wrap( target, this );
     }
 
-    public void setProperties(Properties properties) {
+    @Override
+    public void setProperties( Properties properties ) {
     }
 }
