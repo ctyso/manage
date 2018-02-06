@@ -1,11 +1,13 @@
 package com.interceptor;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.annotation.Json;
 import com.annotation.JspView;
+import com.util.IOUtil;
 import com.util.JsonUtil;
 import com.util.ObjectUtil;
 
@@ -80,7 +83,21 @@ public class SpringInterceptor implements HandlerInterceptor {
     /**
      * 处理Json返回
      */
-    public void handlerJson( HttpServletRequest request, HttpServletResponse response, ModelAndView modelAndView ) {
+    private void handlerJson( HttpServletRequest request, HttpServletResponse response, ModelAndView modelAndView ) {
+        response.setCharacterEncoding( "utf-8" );
+        response.setContentType( "text/html;charset=UTF-8" );
+        response.setHeader( "pragma", "no-cache" );
+        response.setHeader( "cache-control", "no-cache" );
+        // 转换返回结果为Json
+        String json = conversionJson( modelAndView );
+        // 返回Json数据
+        returnResponse( json, response );
+    }
+
+    /**
+     * 转换返回结果为JSON
+     */
+    private String conversionJson( ModelAndView modelAndView ) {
         // 返回值集合
         List<Object> returnList = new ArrayList<Object>();
         // 返回值map
@@ -92,29 +109,70 @@ public class SpringInterceptor implements HandlerInterceptor {
         if ( returnList.size() == 0 ) returnList.add( modelAndView.getViewName() );
         modelAndView.setView( new MappingJackson2JsonView() );
         modelAndView.clear();
-
-        response.setCharacterEncoding( "utf-8" );
-        response.setContentType( "text/html;charset=UTF-8" );
-        response.setHeader( "pragma", "no-cache" );
-        response.setHeader( "cache-control", "no-cache" );
-        PrintWriter writer = null;
-        try {
-            writer = response.getWriter();
-            writer.write( JsonUtil.toJson( returnList.get( 0 ) ) );
-        } catch ( IOException e ) {
-            e.printStackTrace();
-        } finally {
-            if ( writer != null ) writer.close();
-        }
+        return JsonUtil.toJson( returnList.get( 0 ) );
     }
 
     /**
      * 处理jsp页面返回
      */
-    public void handlerJsp( HttpServletRequest request, HttpServletResponse response, ModelAndView modelAndView ) {
+    private void handlerJsp( HttpServletRequest request, HttpServletResponse response, ModelAndView modelAndView ) throws ServletException, IOException {
         response.setCharacterEncoding( "utf-8" );
         response.setContentType( "text/html;charset=UTF-8" );
         response.setHeader( "pragma", "no-cache" );
         response.setHeader( "cache-control", "no-cache" );
+        // 读取页面
+        if ( "index".equals( modelAndView.getViewName() ) || "test".equals( modelAndView.getViewName() ) ) readComponent( request );
+    }
+
+    /**
+     * 读取页面
+     */
+    private void readComponent( HttpServletRequest request ) {
+        try {
+            // 获取组件
+            File componentDirectory = new File( "" );
+            componentDirectory = new File( IOUtil.readResourceAsUrl( request, "/static/js/component" ).getPath() );
+            StringBuffer jsInclude = new StringBuffer();
+            readDirectory( componentDirectory.listFiles(), jsInclude, (String) request.getAttribute( "JS_PATH" ) );
+            request.setAttribute( "component", jsInclude.toString() );
+        } catch ( IOException e ) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 读取目录
+     */
+    private void readDirectory( File[] files, StringBuffer jsInclude, String jsPath ) {
+        for ( File file : files ) {
+            if ( file.isDirectory() ) {
+                readDirectory( file.listFiles(), jsInclude, jsPath );
+            } else {
+                if ( "base.js".equals( file.getName() ) ) continue;
+                jsInclude.append( readFile( file, jsPath ) );
+            }
+        }
+    }
+
+    /**
+     * 读取文件名
+     */
+    private String readFile( File file, String js_path ) {
+        return "<script src=\"" + js_path + "/component/" + file.getName() + "\"></script>";
+    }
+
+    /**
+     * 响应
+     */
+    private void returnResponse( String returnValue, HttpServletResponse response ) {
+        PrintWriter writer = null;
+        try {
+            writer = response.getWriter();
+            writer.write( returnValue );
+        } catch ( IOException e ) {
+            e.printStackTrace();
+        } finally {
+            if ( writer != null ) writer.close();
+        }
     }
 }

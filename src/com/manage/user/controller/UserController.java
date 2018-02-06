@@ -74,4 +74,10 @@ public class UserController {
         return "index";
     }
 
+    @RequestMapping(value = "/test.htm")
+    @JspView
+    public Object test( HttpServletRequest request, HttpServletResponse response ) {
+        return "test";
+    }
+
 }
