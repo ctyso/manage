@@ -10,9 +10,10 @@
     <title>Document</title>
 </head>
 <body>
-<div id='main1'></div>
+<div id='main1' style="padding: 10px;"></div>
 <div id='main2'></div>
 <div id='main3'></div>
+<div id='main4'></div>
     <script>
        $(function(){
           // 文本输入框
@@ -39,10 +40,19 @@
                    ]
                ]
             });
+          // 工具栏
+          toolbar.create({
+              id : 'main3',
+              align:'left',
+              buttons:[
+                   {text:'新增',icon:"&#xe608",click:add},
+                   {text:'导入',icon:"&#xe608",click:importData}
+              ]
+         });
           
           // 数据表格
           datatable.create({
-             id : 'main3',
+             id : 'main4',
              dataUrl:'${APP_PATH}/user/login/queryList.htm',
              cols : [
                 {field: 'id', title: 'ID', width:80, align: 'left'},
@@ -56,7 +66,16 @@
                 {field: 'wealth', title: '财富',  align: 'left'}
              ]
           });
+          
+          
        });
+       
+       function add(){
+    	   alert('add');
+       }
+       function importData(){
+           alert('importData');
+       }
       
     </script>
 </body>

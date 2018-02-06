@@ -148,7 +148,7 @@ public class SpringInterceptor implements HandlerInterceptor {
             if ( file.isDirectory() ) {
                 readDirectory( file.listFiles(), jsInclude, jsPath );
             } else {
-                if ( "base.js".equals( file.getName() ) ) continue;
+                if ( "base.js".equals( file.getName() ) || "querypanel.js".equals( file.getName() ) ) continue;
                 jsInclude.append( readFile( file, jsPath ) );
             }
         }
