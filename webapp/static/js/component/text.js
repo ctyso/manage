@@ -2,13 +2,13 @@
     var text = {
         init:function( option ){
             // 对应的字段名
-            var name = option.name || "";
+            var field = option.field || "";
             // 标签名称
             var label = option.label || "";
             // 检测输入内容
             var check = option.check;
             // 创建控件实体
-            var input = createInput( name , check );
+            var input = createInput( field , check );
             // 创建控件布局层
             return createInputPanel( label , input );
         },
@@ -37,9 +37,9 @@
      * 自定义值
      * }
      */
-    function createInput( name  , check  ) {
+    function createInput( field  , check  ) {
         var input = $("<input type='text' class='layui-input layui_input_set' autocomplete='off'>")
-                 .attr( name , name )
+                 .attr( "field" , field )
                  .attr( "lay-verify" , check );
         return input;
     }

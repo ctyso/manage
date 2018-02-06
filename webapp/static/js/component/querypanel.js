@@ -11,10 +11,10 @@
          $.each( rows , function( i , row ){
            var input_row = [];
             $.each( row , function( i , e ){
-               var name = e.name || '';
+               var field = e.field || '';
                var label = e.label || '';
                var check = e.check;
-               var input = window[e.type].init( { name : name, label : label, check : check } );
+               var input = window[e.type].init( { field : field, label : label, check : check } );
                input_row.push( input );
             } );
             inputs.push( input_row );

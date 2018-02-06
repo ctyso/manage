@@ -12,32 +12,50 @@
 <body>
 <div id='main1'></div>
 <div id='main2'></div>
+<div id='main3'></div>
     <script>
        $(function(){
-    	   // 文本输入框
-    	   text.create({
-    		   id: 'main1',
-    		   name:"username", 
-    		   label:"用户名"
-    	   }); 
-    	   
-    	   // 查询区域
-    	   querypanel.create({
+          // 文本输入框
+          text.create({
+             id: 'main1',
+             field:"username", 
+             label:"用户名"
+          }); 
+          
+          // 查询区域
+          querypanel.create({
                id:"main2",
                title:"查询",
                rows:[
                    [
-                      { type: "text" , name:"username", label:"用户名" },
-                      { type: "text" , name:"username", label:"用户名" },
-                      { type: "text" , name:"username", label:"用户名" },
+                      { type: "text" , field:"username", label:"用户名" },
+                      { type: "text" , field:"username", label:"用户名" },
+                      { type: "text" , field:"username", label:"用户名" },
                    ],
                    [
-                      { type:"text", name:"city", label:"城市" },
-                      { type:"text", name:"city", label:"城市" },
-                      { type:"text", name:"city", label:"城市" },
+                      { type:"text", field:"city", label:"城市" },
+                      { type:"text", field:"city", label:"城市" },
+                      { type:"text", field:"city", label:"城市" },
                    ]
                ]
             });
+          
+          // 数据表格
+          datatable.create({
+             id : 'main3',
+             dataUrl:'${APP_PATH}/user/login/queryList.htm',
+             cols : [
+                {field: 'id', title: 'ID', width:80, align: 'left'},
+                {field: 'username', title: '用户名', width:80, align: 'left'},
+                {field: 'sex', title: '性别', width:80, align: 'left'},
+                {field: 'city', title: '城市', width:80, align: 'left'},
+                {field: 'sign', title: '签名', width:177, align: 'left'},
+                {field: 'experience', title: '积分', width:80, align: 'left'},
+                {field: 'score', title: '评分', width:80, align: 'left'},
+                {field: 'classify', title: '职业', width:100, align: 'left'},
+                {field: 'wealth', title: '财富',  align: 'left'}
+             ]
+          });
        });
       
     </script>
