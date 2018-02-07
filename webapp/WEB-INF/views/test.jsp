@@ -27,6 +27,7 @@
           querypanel.create({
                id:"main2",
                title:"查询",
+               queryUrl:'${APP_PATH}/user/login/queryList.htm',
                rows:[
                    [
                       { type: "text" , field:"username", label:"用户名" },
@@ -40,7 +41,7 @@
                    ]
                ]
             });
-          // 工具栏
+          // 工具栏  ,字体图标icon http://www.layui.com/doc/element/icon.html
           toolbar.create({
               id : 'main3',
               align:'left',
