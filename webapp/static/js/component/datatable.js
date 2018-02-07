@@ -76,18 +76,17 @@
                   ,size: size
                 } );
               table.render();
-            });
+            }); 
             // 绑定监听事件
-            $.each( clicks , function( i , click ){
-                //监听工具条
-                layui.table.on('tool('+tableFlag+')', function(obj){
-                    var layEvent = obj.event;// 获取事件名称
-                    if(layEvent == i){
-                        click();
-                    } 
-                });
-            } );
-            
+            layui.table.on('tool('+tableFlag+')', function(obj){
+                  $.each( clicks , function( i , click ){
+                     //监听工具条
+                     var layEvent = obj.event;// 获取事件名称
+                      if(layEvent == i){
+                          click();
+                      } 
+                  } );
+            });
       }
    }
    window.datatable= datatable;
