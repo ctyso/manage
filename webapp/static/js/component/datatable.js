@@ -28,16 +28,36 @@
           // 数据列
           var cols = option.cols || [];
           var resultCols = [];
-          
+          var clicks = [];
           $.each( cols , function( i , col ){
             var tempCol = {};
             tempCol.field = col.field;
             tempCol.title = col.title;
             tempCol.width = col.width;
             tempCol.fixed = col.align;
+            if( col.toolbar ) {
+               // 生成操作列
+               tempCol.toolbar = '#barModel';
+               // 生成模板块
+               var script = $("<script type='text/html' id='barModel'>");
+               $.each( col.toolbar , function( index , e ){
+                   // 保存点击操作
+                   clicks.push( e.click );
+                   // 生成操作按钮并标识事件名为索引
+                   var a = $("<a class='layui-btn layui-btn-xs'>").attr("lay-event",index).html( e.text );
+                   // 添加按钮到索引块
+                   script.append( a );
+               } );
+               // 添加索引块到页面
+               $("body").append( script );
+            }
             resultCols.push( tempCol );
           } );
-      
+          // 组件标识
+          var tableFlag = "table";
+          // 给父级添加添加组件标识，用于后面找到该组件
+          $("#"+id).attr("lay-filter","table");
+          // 生成表格
           layui.use('table', function(){
               var table = layui.table;
               table.render( {
@@ -57,8 +77,18 @@
                 } );
               table.render();
             });
+            // 绑定监听事件
+            $.each( clicks , function( i , click ){
+                //监听工具条
+                layui.table.on('tool('+tableFlag+')', function(obj){
+                    var layEvent = obj.event;// 获取事件名称
+                    if(layEvent == i){
+                        click();
+                    } 
+                });
+            } );
+            
       }
    }
-
    window.datatable= datatable;
 }(window, jQuery);

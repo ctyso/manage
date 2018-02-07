@@ -64,18 +64,28 @@
                 {field: 'experience', title: '积分', width:80, align: 'left'},
                 {field: 'score', title: '评分', width:80, align: 'left'},
                 {field: 'classify', title: '职业', width:100, align: 'left'},
-                {field: 'wealth', title: '财富',  align: 'left'}
+                {field: 'wealth', title: '财富',  align: 'left'},
+                {   
+                	title:'操作',
+                    width:178,
+                    align:'center',
+                    toolbar:[{
+                        text:'修改',
+                        click : change
+                    }]
+                }
              ]
-          });
-          
-          
+          });          
        });
        
        function add(){
-    	   alert('add');
+           alert('add');
        }
        function importData(){
            alert('importData');
+       }
+       function change(){
+           alert('change');
        }
       
     </script>
