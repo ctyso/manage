@@ -1,6 +1,7 @@
 <%--弹出层--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
-<button class="layui-btn" onclick="openWindow()">新增</button>
+<a class="layui-btn layui-btn-small"><i class="layui-icon"></i>新增</a>
+<a class="layui-btn layui-btn-small"><i class="layui-icon"></i>导入</a>
 <script>
     function openWindow(){
     	//eg1
@@ -10,7 +11,7 @@
     	//eg3
     	// layer.load(1); //风格1的加载
         layer.open({
-        	skin: 'demo-class',
+            skin: 'demo-class',
             title:'登录',
             area: ['1200px', '600px'],
             type: 2, // 0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）

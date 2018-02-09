@@ -10,7 +10,7 @@
                     <div class="layui-inline">
                             <label class="layui-form-label">用户名</label>
                             <div class="layui-input-inline">
-                              <input type="text" name="username" lay-verify="required"  autocomplete="off" class="layui-input layui_input_set">
+                              <input type="text" name="username" lay-verify="required"  autocomplete="off" class="layui-input layui-input-set">
                             </div>
                     </div>
               </div>
@@ -20,7 +20,7 @@
                       <div class="layui-inline">
                         <label class="layui-form-label">用户名</label>
                         <div class="layui-input-inline">
-                          <input type="text" name="username" lay-verify="required"  autocomplete="off" class="layui-input layui_input_set">
+                          <input type="text" name="username" lay-verify="required"  autocomplete="off" class="layui-input layui-input-set">
                         </div>
                       </div>
               </div>
@@ -30,7 +30,7 @@
                    <div class="layui-inline">
                             <label class="layui-form-label">用户名</label>
                             <div class="layui-input-inline" style="white-space:nowrap;">
-                              <input type="text" name="username" lay-verify="required"  autocomplete="off" class="layui-input layui_input_set" >
+                              <input type="text" name="username" lay-verify="required"  autocomplete="off" class="layui-input layui-input-set" >
                             </div>
                     </div>
               </div>
@@ -40,8 +40,8 @@
     </div>
     <div class="layui-col-md3">
       <div class="grid-demo" style="display: inline-block;">
-            <a href="javascript:;" class="layui-inline layui-btn layui-btn-small " id="search" style="display: inline-block;"> <i class="layui-icon" >&#xe615;</i> 搜索</a>
-            <a href="javascript:;" class="layui-inline layui-btn layui-btn-small " id="search" style="display: inline-block;"><i class="layui-icon">&#xe640;</i>重置 </a>
+            <a href="javascript:;" class="layui-inline layui-btn layui-btn-small search-button" style="display: inline-block;"> <i class="layui-icon" >&#xe615;</i> 搜索</a>
+            <a href="javascript:;" class="layui-inline layui-btn layui-btn-small search-button" style="display: inline-block;"><i class="layui-icon">&#xe640;</i>重置 </a>
       </div>
     </div> 
   </div>
@@ -55,7 +55,7 @@
                     <div class="layui-inline">
                             <label class="layui-form-label">用户名</label>
                             <div class="layui-input-inline">
-                              <input type="text" name="username" lay-verify="required"  autocomplete="off" class="layui-input layui_input_set">
+                              <input type="text" name="username" lay-verify="required"  autocomplete="off" class="layui-input layui-input-set">
                             </div>
                     </div>
               </div>
@@ -65,7 +65,7 @@
                     <div class="layui-inline">
                             <label class="layui-form-label">用户名</label>
                             <div class="layui-input-inline">
-                              <input type="text" name="username" lay-verify="required"  autocomplete="off" class="layui-input layui_input_set">
+                              <input type="text" name="username" lay-verify="required"  autocomplete="off" class="layui-input layui-input-set">
                             </div>
                      </div>
               </div>
@@ -75,7 +75,7 @@
                     <div class="layui-inline">
                             <label class="layui-form-label">用户名</label>
                             <div class="layui-input-inline" style="white-space:nowrap;">
-                              <input type="text" name="username" lay-verify="required"  autocomplete="off" class="layui-input layui_input_set" >
+                              <input type="text" name="username" lay-verify="required"  autocomplete="off" class="layui-input layui-input-set" >
                             </div>
                      </div>
               </div>

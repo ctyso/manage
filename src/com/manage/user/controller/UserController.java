@@ -80,4 +80,10 @@ public class UserController {
         return "test";
     }
 
+    @RequestMapping(value = "/testForm.htm")
+    @JspView
+    public Object testForm( HttpServletRequest request, HttpServletResponse response ) {
+        return "test_form";
+    }
+
 }

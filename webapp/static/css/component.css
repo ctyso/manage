@@ -1,9 +1,12 @@
 body{
-	 min-width: 1349px;
+    min-width: 1349px;
+    font-size: 12px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .text-right{
-	text-align: right;
+    text-align: right;
 }
 .panel {
     margin-top: 3px;
@@ -23,10 +26,6 @@ body{
     margin: 0 3px
 }
 
-.clearfix {
-    zoom: 1;
-}
-
 .content {
     width: 84%;
     box-sizing: border-box;
@@ -37,25 +36,41 @@ body{
     display: inline-block;
 }
 
-.query-title{
-	font-size:18px;
-	font-family:'ºÚÌå';
-	font: #0c0c0c
+.search-button{
+    margin-left:30px;
+    width:100px
 }
 
-.toolbar {
-    padding: 10px 10px 0 0;
-    text-align: right;
+.title{
+    background: #F2F2F2;
+    padding: 0px 10px 0px 10px;
+    border: 1px solid #ccc;
+    border-bottom:0px;
+    height: 30px;
+    line-height: 30px;
+    color: #6699CC;
+    font-weight: bold;
+    overflow: hidden;
+    text-align: left;
+}
+
+.search-block{
+    border: 1px solid #ccc;
+    padding: 10px 10px 10px 10px;
+    height: 135px;
+}
+
+
+.query-title{
+    font-size:18px;
+    font-family:'ºÚÌå';
+    font: #0c0c0c
 }
 
 .queryitem {
     margin-top: 20px;
     float:left;
     width:30%;
-}
-
-#table {
-    margin: 0 5px 0 5px;
 }
 
 .search_item_btn {
@@ -65,17 +80,24 @@ body{
     
 }
 
-.layui_input_set{
-	width:173px;
+.toolbar {
+    padding: 7px;
+    margin:10px 0;
+    box-sizing:border-box;
+    text-align: right;
+    border: 1px solid #ccc;
 }
 
-#search{
-	margin-left:30px;
-	width:100px
+#table {
+    margin: 0 5px 0 5px;
 }
 
 .row{
-	white-space: nowrap;
-	overflow:hidden;
-	margin-top:20px
+    white-space: nowrap;
+    overflow:hidden;
+    margin-top:20px
+}
+
+.layui-input-set{
+    width:173px;
 }

@@ -54,6 +54,7 @@
           // 数据表格
           datatable.create({
              id : 'main4',
+             title:'列表',
              dataUrl:'${APP_PATH}/user/login/queryList.htm',
              cols : [
                 {field: 'id', title: 'ID', width:80, align: 'left'},

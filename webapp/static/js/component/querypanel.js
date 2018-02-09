@@ -77,8 +77,8 @@
       // 按钮区，会不会有点流氓
       var layui_col_md3_1 = $( "<div class='layui-col-md3'>" );
       layui_col_md3_1.html( "<div class='grid-demo' style='display: inline-block;'>"
-            +"<a href='javascript:querypanel.query();' class='layui-inline layui-btn layui-btn-small' id='search' style='display: inline-block;'><i class='layui-icon'>&#xe615;</i>搜索</a>" 
-            +"<a href='javascript:querypanel.reset();' class='layui-inline layui-btn layui-btn-small' id='search' style='display: inline-block;'><i class='layui-icon'>&#xe640;</i>重置</a>"
+            +"<a href='javascript:querypanel.query();' class='layui-inline layui-btn layui-btn-small search-button' style='display: inline-block;'><i class='layui-icon'>&#xe615;</i>搜索</a>" 
+            +"<a href='javascript:querypanel.reset();' class='layui-inline layui-btn layui-btn-small search-button' style='display: inline-block;'><i class='layui-icon'>&#xe640;</i>重置</a>"
             +"</div>");
       
       // 反正就是套娃呗╮(╯▽╰)╭,给输入区嵌套外框

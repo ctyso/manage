@@ -84,7 +84,7 @@
                      var layEvent = obj.event;// 获取事件名称
                       if(layEvent == i){
                           click();
-                      } 
+                      }
                   } );
             });
       }

@@ -38,7 +38,7 @@
      * }
      */
     function createInput( field  , check  ) {
-        var input = $("<input type='text' class='layui-input layui_input_set input' autocomplete='off'>")
+        var input = $("<input type='text' class='layui-input layui-input-set input' autocomplete='off'>")
                  .attr( "field" , field )
                  .attr( "lay-verify" , check );
         return input;

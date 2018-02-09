@@ -17,24 +17,25 @@
         <jsp:include page="demo/headnav.jsp"></jsp:include>
     </div>
     <div class="panel">
-		<div>
-		  <jsp:include page="demo/leftnva.jsp"></jsp:include>
-		</div>
-		<div class="content">
-            <fieldset class="layui-elem-field site-demo-button" style="height: 175px;">
-                <legend style="font-size:18px;font-family:'黑体';font: #0c0c0c">查询</legend>
-                <jsp:include page="demo/querypanel.jsp"></jsp:include>
-            </fieldset>
-	        <div class="toolbar">
-	            <jsp:include page="demo/layer.jsp"></jsp:include>
-	        </div>
-	        <div>
-		        <fieldset class="layui-elem-field site-demo-button" style="padding: 0 15px 2px 15px">
-	                <legend style="font-size:18px;font-family:'黑体';font: #0c0c0c">列表</legend>
-	                <jsp:include page="demo/datatable.jsp"></jsp:include>
-	            </fieldset>
-	        </div>
-		</div>
+        <div>
+          <jsp:include page="demo/leftnva.jsp"></jsp:include>
+        </div>
+        <div class="content">
+            <div>
+                <div class="title"><i></i>查询面板</div>
+                <div class="search-block">
+                    <jsp:include page="demo/querypanel.jsp"></jsp:include>
+                </div>
+                
+            </div>
+            <div class="toolbar">
+                <jsp:include page="demo/layer.jsp"></jsp:include>
+            </div>
+            <div>
+                <div class="title" style="margin-bottom:-10px"><i></i>列表</div>
+                <jsp:include page="demo/datatable.jsp"></jsp:include>
+            </div>
+        </div>
     </div>
 </body>
 </html>
