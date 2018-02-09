@@ -6,10 +6,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="${JS_PATH}/jquery/jquery-3.3.1.min.js"></script>
-    <script src="${JS_PATH}/layui/layui.all.js"></script>
-    <link rel="stylesheet" href="${JS_PATH}/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="${CSS_PATH}/component.css" media="all">
+    <jsp:include page="include.jsp"></jsp:include>
     <title>Document</title>
 </head>
 <body>
@@ -22,7 +19,7 @@
         </div>
         <div class="content">
             <div>
-                <div class="title"><i></i>查询面板</div>
+                <div class="title"><i class="iconfont icon-biaotitubiao"></i><span>查询面板</span></div>
                 <div class="search-block">
                     <jsp:include page="demo/querypanel.jsp"></jsp:include>
                 </div>
@@ -32,7 +29,7 @@
                 <jsp:include page="demo/layer.jsp"></jsp:include>
             </div>
             <div>
-                <div class="title" style="margin-bottom:-10px"><i></i>列表</div>
+                <div class="title" style="margin-bottom:-10px"><i class="iconfont icon-biaotitubiao"></i><span>列表</span></div>
                 <jsp:include page="demo/datatable.jsp"></jsp:include>
             </div>
         </div>
