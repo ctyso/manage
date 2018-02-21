@@ -8,6 +8,7 @@ body{
 .text-right{
     text-align: right;
 }
+
 .panel {
     margin-top: 3px;
     height: 860px;
@@ -55,10 +56,13 @@ body{
     vertical-align: middle;
 }
 
+.title i{
+    float:left;
+}
 
 .title span{
-	display:inline-block;
-	margin-left: 2px;
+    display:inline-block;
+    margin-left: 2px;
 }
 
 .search-block{
@@ -89,8 +93,8 @@ body{
 
 .toolbar {
     padding: 7px;
-    margin:10px 0;
-    box-sizing:border-box;
+    margin: 10px 0;
+    box-sizing: border-box;
     text-align: right;
     border: 1px solid #ccc;
 }
@@ -99,12 +103,12 @@ body{
     margin: 0 5px 0 5px;
 }
 
-.row{
+.row {
     white-space: nowrap;
     overflow:hidden;
     margin-top:20px
 }
 
-.layui-input-set{
+.layui-input-set {
     width:173px;
 }

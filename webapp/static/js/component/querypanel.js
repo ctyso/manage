@@ -29,6 +29,12 @@
           var id = option.id;
           // 获取父级
           var parent = $("#" + id);
+          // 图标
+          var icon = option.icon || 'icon-biaotitubiao';
+          // 标题
+          var title = option.title || '查询面板';
+          // 设置标题到父级
+          $(parent).append("<div class='title'><i class='iconfont "+icon+"'></i><span>"+title+"</span></div>")
           // 设置外框到父级
           $(parent).append( this.init( option ) );
       },
@@ -56,9 +62,8 @@
     * @param inputs 实体
     */
    function createPanel( title , inputs ){
-      var content = $( "<div id='content'>" );
-      var fieldset = $( "<fieldset class='layui-elem-field site-demo-button' style='height: 175px;'>" );
-      var legend = $( "<legend class='query-title'>" ).html( title );
+      var search_block = $( "<div class='search-block'>" );
+    
       var layui_div_form = $( "<div class='layui-form' style='height:100%;'>" );
 
       // 第一行
@@ -107,10 +112,8 @@
       layui_div_form.append( layui_row1 );
       layui_div_form.append( layui_row2 );
 
-      // 套一下标题
-      fieldset.append( legend );
-      fieldset.append( layui_div_form );
-      return fieldset;
+      search_block.append( layui_div_form );
+      return search_block;
    }
    window.querypanel= querypanel;
 }(window, jQuery);

@@ -3,7 +3,7 @@
         init:function( option ){
             var buttons = option.buttons || [];
             var align = option.align || 'left';
-            var blockquote = $("<blockquote class='layui-elem-quote'>").css( 'text-align' , align );
+            var toolbar = $("<div class='toolbar'>");
             $.each( buttons , function( i , button ){
                 var icon = button.icon || '&#xe608';
                 var click = button.click; 
@@ -12,9 +12,9 @@
                             .click( click )
                             .append( $("<i class='layui-icon'>").html( icon ) )
                             .append( text );
-                blockquote.append( a );
+                toolbar.append( a );
             });
-            return blockquote;
+            return toolbar;
         },
         create:function( option ){
             // 控件上级的id

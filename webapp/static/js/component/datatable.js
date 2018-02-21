@@ -25,6 +25,9 @@
           var even = true;
           // 表格尺寸 小尺寸的表格  sm （小尺寸)  lg （大尺寸）
           var size = 'sm';
+          // 表格图标
+          var icon = option.icon || 'icon-biaotitubiao';
+          var title = option.title || '列表';
           // 数据列
           var cols = option.cols || [];
           var resultCols = [];
@@ -56,7 +59,10 @@
           // 组件标识
           var tableFlag = "table";
           // 给父级添加添加组件标识，用于后面找到该组件
-          $("#"+id).attr("lay-filter","table");
+          var parent = $("#"+id);
+          var table = $("<div>").attr("lay-filter","table");
+          parent.html("<div class='title' style='margin-bottom:-10px'><i class='iconfont "+icon+"'></i><span>"+title+"</span></div>");
+          parent.append( table );
           // 生成表格
           layui.use('table', function(){
               var table = layui.table;

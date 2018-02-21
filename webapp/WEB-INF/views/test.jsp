@@ -3,8 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <jsp:include page="include.jsp"></jsp:include>
     <title>Document</title>
@@ -26,7 +25,8 @@
           // 查询区域
           querypanel.create({
                id:"main2",
-               title:"查询",
+               title:'查询面板',
+               icon : 'icon-biaotitubiao',
                queryUrl:'${APP_PATH}/user/login/queryList.htm',
                rows:[
                    [
@@ -54,8 +54,9 @@
           // 数据表格
           datatable.create({
              id : 'main4',
-             title:'列表',
              dataUrl:'${APP_PATH}/user/login/queryList.htm',
+             title:'列表',
+             icon : 'icon-biaotitubiao',
              cols : [
                 {field: 'id', title: 'ID', width:80, align: 'left'},
                 {field: 'username', title: '用户名', width:80, align: 'left'},
