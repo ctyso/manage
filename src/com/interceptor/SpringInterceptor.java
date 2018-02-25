@@ -121,7 +121,7 @@ public class SpringInterceptor implements HandlerInterceptor {
         response.setHeader( "pragma", "no-cache" );
         response.setHeader( "cache-control", "no-cache" );
         // 读取页面
-        if ( "index".equals( modelAndView.getViewName() ) || "test".equals( modelAndView.getViewName() ) ) readComponent( request );
+        if ( "index".equals( modelAndView.getViewName() ) || "test".equals( modelAndView.getViewName() ) || "test_form".equals( modelAndView.getViewName() ) ) readComponent( request );
     }
 
     /**

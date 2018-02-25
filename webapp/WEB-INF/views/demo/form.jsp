@@ -3,14 +3,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="${JS_PATH}/layui/css/modules/laydate/default/laydate.css" media="all">
     <link rel="stylesheet" href="${JS_PATH}/layui/css/layui.css" media="all">
     <script src="${JS_PATH}/jquery/jquery-3.3.1.min.js"></script>
     <script src="${JS_PATH}/layui/layui.all.js"></script>
-    
     <title>Document</title>
 </head>
 <body>
@@ -38,7 +36,7 @@
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
   <legend>表单集合演示</legend>
 </fieldset>
- 
+
 <form class="layui-form" action="">
   <div class="layui-form-item">
     <label class="layui-form-label">单行输入框</label>

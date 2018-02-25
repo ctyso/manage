@@ -3,7 +3,7 @@
         init:function( option ){
             var buttons = option.buttons || [];
             var align = option.align || 'left';
-            var toolbar = $("<div class='toolbar'>");
+            var toolbar = $("<div class='toolbar'>").addClass( "text-"+align );
             $.each( buttons , function( i , button ){
                 var icon = button.icon || '&#xe608';
                 var click = button.click; 

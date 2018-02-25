@@ -1,6 +1,16 @@
 ;!function (window, $, undefined) {
    var datatable = {
-      create:function( option ){
+      init:function( option ){
+          // 表格图标
+          var icon = option.icon || 'icon-biaotitubiao';
+          var title = option.title || '列表';
+          var $div = $("<div>");
+          $div.html( "<div class='title' style='margin-bottom:-10px'><i class='iconfont "+icon+"'></i><span>"+title+"</span></div>" );
+          var table = $("<div>").attr("lay-filter","table");
+          $div.append( table );
+          return $div;
+      },
+      load:function( option ){
           // 控件上级的id
           var id = option.id;
           // 表格高度
@@ -25,9 +35,7 @@
           var even = true;
           // 表格尺寸 小尺寸的表格  sm （小尺寸)  lg （大尺寸）
           var size = 'sm';
-          // 表格图标
-          var icon = option.icon || 'icon-biaotitubiao';
-          var title = option.title || '列表';
+          
           // 数据列
           var cols = option.cols || [];
           var resultCols = [];
@@ -58,16 +66,10 @@
           } );
           // 组件标识
           var tableFlag = "table";
-          // 给父级添加添加组件标识，用于后面找到该组件
-          var parent = $("#"+id);
-          var table = $("<div>").attr("lay-filter","table");
-          parent.html("<div class='title' style='margin-bottom:-10px'><i class='iconfont "+icon+"'></i><span>"+title+"</span></div>");
-          parent.append( table );
-          // 生成表格
           layui.use('table', function(){
               var table = layui.table;
               table.render( {
-                  elem: "#"+id
+                   elem: "#"+id
                   ,height: height
                   ,url: dataUrl
                   ,page: isPage
@@ -82,17 +84,26 @@
                   ,size: size
                 } );
               table.render();
-            }); 
-            // 绑定监听事件
-            layui.table.on('tool('+tableFlag+')', function(obj){
-                  $.each( clicks , function( i , click ){
-                     //监听工具条
-                     var layEvent = obj.event;// 获取事件名称
-                      if(layEvent == i){
-                          click();
-                      }
-                  } );
-            });
+         }); 
+         // 绑定监听事件
+         layui.table.on('tool('+tableFlag+')', function(obj){
+              $.each( clicks , function( i , click ){
+                 //监听工具条
+                 var layEvent = obj.event;// 获取事件名称
+                  if(layEvent == i){
+                      click();
+                  }
+              } );
+         });
+      },
+      create:function( option ){
+          // 控件上级的id
+          var id = option.id;
+          // 给父级添加添加组件标识，用于后面找到该组件
+          var parent = $("#"+id);
+          parent.append( this.init( option ) );
+          // 加载表格
+          this.load( option );
       }
    }
    window.datatable= datatable;

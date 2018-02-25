@@ -45,7 +45,6 @@
             var value = $(input).val();
             if( value ) parms[$(input).attr("field")] = value;
           } );
-          console.log(JSON.stringify(parms));
           $.post( queryUrl , parms , function( data ){
               
           } );

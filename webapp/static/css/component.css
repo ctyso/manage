@@ -5,6 +5,14 @@ body{
     margin: 0px;
 }
 
+.text-left{
+    text-align: left;
+}
+
+.text-center{
+    text-align: center;
+}
+
 .text-right{
     text-align: right;
 }
@@ -95,7 +103,6 @@ body{
     padding: 7px;
     margin: 10px 0;
     box-sizing: border-box;
-    text-align: right;
     border: 1px solid #ccc;
 }
 
@@ -111,4 +118,22 @@ body{
 
 .layui-input-set {
     width:173px;
+}
+
+.form-row{
+    margin-top:10px;
+}
+
+.form-block{
+    border:1px solid #ccc;
+    padding-bottom:10px;
+}
+
+.form-block-title{
+    border:0px;
+    border-bottom:1px solid #ccc
+}
+
+.field{
+    margin:15px
 }

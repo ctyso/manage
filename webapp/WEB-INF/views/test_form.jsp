@@ -9,11 +9,12 @@
     <title>Document</title>
 </head>
 <body>
-    <jsp:include page="demo/form.jsp"></jsp:include>
+<div id='form'></div>
     <script>
        $(function(){
-           form.create([
-               {
+           form.create({
+               id : 'form',
+               content : [{
                   type:'toolbar',
                   align:'left',
                   buttons:[
@@ -24,22 +25,58 @@
                {
                   type:'block',
                   title:"用户信息",
+                  icon : 'icon-biaotitubiao',
                   rows:[
                       [
-                         { type: "text" , field:"username", label:"用户名" },
-                         { type: "text" , field:"username", label:"用户名" },
-                         { type: "text" , field:"username", label:"用户名" },
+                         { type: "text" , field:"username", label:"用户名" }
                       ],
                       [
-                         { type:"text", field:"city", label:"城市" },
-                         { type:"text", field:"city", label:"城市" },
-                         { type:"text", field:"city", label:"城市" },
+                         { type: "text" , field:"username", label:"用户名" , cols:"2" }
+                      ],
+                      [
+                          { type: "text" , field:"username", label:"用户名" , cols:"3" }
                       ]
                   ]
                },
                {
+                   type:'block',
+                   title:"用户信息",
+                   icon : 'icon-biaotitubiao',
+                   rows:[
+                       [
+                           { type:"text", field:"city", label:"城市" },
+                           { type:"text", field:"city", label:"城市" }
+                       ],
+                       [
+                           { type:"blank" },
+                           { type:"text", field:"city", label:"城市" }
+                       ],
+                       [
+                          { type:"text", field:"city", label:"城市" , cols:"2" },
+                          { type:"text", field:"city", label:"城市" }
+                       ],
+                       [
+                           { type:"text", field:"city", label:"城市" },
+                           { type:"text", field:"city", label:"城市" , cols:"2" }
+                       ]
+                   ]
+               },
+               {
+                   type:'block',
+                   title:"用户信息",
+                   icon : 'icon-biaotitubiao',
+                   rows:[
+                       [
+                          { type: "text" , field:"username", label:"用户名" },
+                          { type: "text" , field:"username", label:"用户名" },
+                          { type: "text" , field:"username", label:"用户名" },
+                       ]
+                   ]
+                },
+               {
                    type:'datatable',
                    title:"列表",
+                   icon : 'icon-biaotitubiao',
                    dataUrl:'${APP_PATH}/user/login/queryList.htm',
                    cols : [
                       {field: 'id', title: 'ID', width:80, align: 'left'},
@@ -65,8 +102,7 @@
                           }]
                       }
                    ]
-               }
-           ]);
+               }]});
        });
 
        function add(){

@@ -13,6 +13,7 @@
 <div id='main2'></div>
 <div id='main3'></div>
 <div id='main4'></div>
+<jsp:include page="demo/form.jsp"></jsp:include>
     <script>
        $(function(){
           // 文本输入框
