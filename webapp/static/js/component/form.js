@@ -75,7 +75,6 @@
           rowField = createRowField( row );
           // 2.解析行内元素
           analysiRowElement( rowField , row );
-
           // 3.放置行布局到外围布局
           field.append( rowField );
        } );
@@ -88,62 +87,19 @@
      * @param row 行内元素
      */
     function createRowField( row ){
-       var length = row.length;
-       if( 1 >= length ) return createRow1( row );
-       if( 2 == length ) return createRow2( row );
-       if( 3 == length ) return createRow3();
-    }
-    
-    /**
-     * 创建1个行表单元素布局
-     */
-    function createRow1( row ){
-      var layui_row = $( "<div class='layui-row'>" );
-      $.each( row , function( i , e ){
-          var cols = e.cols || 1 ;
-          if( 2 == cols ){
-              var layui_col_md8 = $( "<div class='layui-col-md8'>" );
-              layui_row.append( layui_col_md8 );
-          } else if( 3 == cols ){
-              var layui_col_md12 = $( "<div class='layui-col-md12'>" );
-              layui_row.append( layui_col_md12 );
-          } else{
-              var layui_col_md4 = $( "<div class='layui-col-md4'>" );
-              layui_row.append( layui_col_md4 );
-          }
-      } );
-      return layui_row;
-    }
-    
-    /**
-     * 创建2个行表单元素布局
-     * @parm row 行内元素
-     */
-    function createRow2( row ){
-       var layui_row = $( "<div class='layui-row'>" );
-       $.each( row , function( i , e ){
-           var cols = e.cols || 1 ;
-           if( 2 == cols ){
-               var layui_col_md8 = $( "<div class='layui-col-md8'>" );
-               layui_row.append( layui_col_md8 );
-           } else if( 3 == cols ){
-               var layui_col_md12 = $( "<div class='layui-col-md12'>" );
-               layui_row.append( layui_col_md12 );
-           } else{
-               var layui_col_md4 = $( "<div class='layui-col-md4'>" );
-               layui_row.append( layui_col_md4 );
-           }
-       } );
-       return layui_row;
-    }
-    
-    /**
-     * 创建3个行表单元素布局
-     */
-    function createRow3(){
-    	 var layui_row = $( "<div class='layui-row'>" );
-         for( var i = 0 ; i < 3 ; i++ ) layui_row.append( $( "<div class='layui-col-md4'>" ) );
-         return layui_row;
+        var layui_row = $( "<div class='layui-row'>" );
+        $.each( row , function( i , e ){
+            var cols = e.cols || 1 ;
+            // 根据不同的合并列来生成不同的布局
+            if( 2 == cols ){
+                layui_row.append( $( "<div class='layui-col-md8'>" ) );
+            } else if( 3 == cols ){
+                layui_row.append( $( "<div class='layui-col-md12'>" ) );
+            } else{
+                layui_row.append( $( "<div class='layui-col-md4'>" ) );
+            }
+        } );
+        return layui_row;
     }
     
     /**
@@ -164,14 +120,6 @@
     function initFormStyle(){
        $( ".grid-demo" ).removeClass( "text-right" );
        $( ".layui-row" ).addClass( "form-row" );
-       $( ".layui-row>div>.grid-demo" ).html( $( ".layui-col-md8>.grid-demo>.layui-inline" ).html() );
-       $( ".layui-row>div>.grid-demo" ).css( "margin-bottom","0px" ).css( "padding-right" , "15px" ).attr( "class" , "layui-form-item" );
-       $( ".layui-row>div>.layui-form-item>.layui-input-inline" ).attr( "class" , "layui-input-block" )
-       $( ".layui-row>div>.layui-form-item>.layui-input-block>input" ).attr( "class" , "layui-input" );
-       //$( ".layui-col-md8>.grid-demo" ).css( "text-align" , "left" );
-       /*$( ".layui-col-md8>.grid-demo>.layui-inline>label" ).css( "float","none" ).css( "display","inline-block" );
-       $( ".layui-col-md8>.grid-demo>.layui-inline>.layui-input-inline" ).css( "width","63.98%" );
-       $( ".layui-col-md8>.grid-demo>.layui-inline>.layui-input-inline>input" ).css( "width","100%" );*/
     }
     
     /**

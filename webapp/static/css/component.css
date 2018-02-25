@@ -75,7 +75,6 @@ body{
 
 .search-block{
     border: 1px solid #ccc;
-    padding: 10px 10px 10px 10px;
     height: 135px;
 }
 
@@ -114,10 +113,6 @@ body{
     white-space: nowrap;
     overflow:hidden;
     margin-top:20px
-}
-
-.layui-input-set {
-    width:173px;
 }
 
 .form-row{

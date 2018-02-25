@@ -97,11 +97,17 @@
          });
       },
       create:function( option ){
+          // 这外层是为了控制生成表格的宽度
+          var $div = $( "<div>" );
           // 控件上级的id
           var id = option.id;
           // 给父级添加添加组件标识，用于后面找到该组件
           var parent = $("#"+id);
-          parent.append( this.init( option ) );
+          $div.attr( "id" , id );
+          parent.append( $div );
+          parent.attr( "id" , "" );
+          $div.append( this.init( option ) );
+          
           // 加载表格
           this.load( option );
       }

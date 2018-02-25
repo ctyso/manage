@@ -9,10 +9,10 @@
     <title>Document</title>
 </head>
 <body>
-<div id='main1' style="padding: 10px;"></div>
-<div id='main2'></div>
-<div id='main3'></div>
-<div id='main4'></div>
+<div id='main1' class="field"></div>
+<div id='main2' class="field"></div>
+<div id='main3' class="field"></div>
+<div id='main4' class="field"></div>
 <jsp:include page="demo/form.jsp"></jsp:include>
     <script>
        $(function(){
