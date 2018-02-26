@@ -83,8 +83,9 @@
            alert('importData');
        }
        function change(){
-           alert('change');
-       }function del(){
+    	   window.location.href = "${APP_PATH}/user/login/testForm.htm";
+       }
+       function del(){
            alert('del');
        }
       
