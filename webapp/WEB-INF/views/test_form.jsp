@@ -19,7 +19,7 @@
                   align:'left',
                   buttons:[
                        {text:'新增',icon:"&#xe608",click:add},
-                       {text:'导入',icon:"&#xe608",click:importData}
+                       {text:'返回',icon:"&#xe608",click:back}
                   ]
                },
                {
@@ -115,6 +115,10 @@
            alert('change');
        }function del(){
            alert('del');
+       }
+       
+       function back(){
+    	   window.location.href = "${APP_PATH}/user/login/test.htm";
        }
     </script>
 </body>
