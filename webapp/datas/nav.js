@@ -93,6 +93,6 @@ var navs = [{
 }, {
 	"title": "菜单管理",
 	"icon": "fa-stop-circle",
-	"href": path+"/html/module.jsp",
+	"href": path+"/user/login/test.htm",
 	"spread": false
 }];

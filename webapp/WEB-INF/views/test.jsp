@@ -9,20 +9,11 @@
     <title>Document</title>
 </head>
 <body>
-<div id='main1' class="field"></div>
 <div id='main2' class="field"></div>
 <div id='main3' class="field"></div>
 <div id='main4' class="field"></div>
-<jsp:include page="demo/form.jsp"></jsp:include>
     <script>
        $(function(){
-          // 文本输入框
-          text.create({
-             id: 'main1',
-             field:"username", 
-             label:"用户名"
-          }); 
-          
           // 查询区域
           querypanel.create({
                id:"main2",
@@ -74,11 +65,11 @@
                     align:'center',
                     toolbar:[{
                         text:'修改',
-                        click : change
+                        click : "change"
                     },
                     {
                         text:'删除',
-                        click : del
+                        click : "del"
                     }]
                 }
              ]

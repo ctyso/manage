@@ -34,7 +34,7 @@
                          { type: "text" , field:"username", label:"用户名" , cols:"2" }
                       ],
                       [
-                          { type: "text" , field:"username", label:"用户名" , cols:"3" }
+                         { type: "text" , field:"username", label:"用户名" , cols:"3" }
                       ]
                   ]
                },
@@ -94,11 +94,11 @@
                           align:'center',
                           toolbar:[{
                               text:'修改',
-                              click : change
+                              click : "change"
                           },
                           {
                               text:'删除',
-                              click : del
+                              click : "del"
                           }]
                       }
                    ]

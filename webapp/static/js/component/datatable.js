@@ -39,7 +39,6 @@
           // 数据列
           var cols = option.cols || [];
           var resultCols = [];
-          var clicks = [];
           $.each( cols , function( i , col ){
             var tempCol = {};
             tempCol.field = col.field;
@@ -53,9 +52,8 @@
                var script = $("<script type='text/html' id='barModel'>");
                $.each( col.toolbar , function( index , e ){
                    // 保存点击操作
-                   clicks.push( e.click );
                    // 生成操作按钮并标识事件名为索引
-                   var a = $("<a class='layui-btn layui-btn-xs'>").attr("lay-event",index).html( e.text );
+                   var a = $("<a class='layui-btn layui-btn-xs'>").html( e.text ).attr( "href" , "javaScript:" + e.click +"()");
                    // 添加按钮到索引块
                    script.append( a );
                } );
@@ -64,8 +62,6 @@
             }
             resultCols.push( tempCol );
           } );
-          // 组件标识
-          var tableFlag = "table";
           layui.use('table', function(){
               var table = layui.table;
               table.render( {
@@ -85,16 +81,6 @@
                 } );
               table.render();
          }); 
-         // 绑定监听事件
-         layui.table.on('tool('+tableFlag+')', function(obj){
-              $.each( clicks , function( i , click ){
-                 //监听工具条
-                 var layEvent = obj.event;// 获取事件名称
-                  if(layEvent == i){
-                      click();
-                  }
-              } );
-         });
       },
       create:function( option ){
           // 这外层是为了控制生成表格的宽度
