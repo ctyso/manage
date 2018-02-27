@@ -94,11 +94,11 @@
                           align:'center',
                           toolbar:[{
                               text:'修改',
-                              click : "change"
+                              click : change
                           },
                           {
                               text:'删除',
-                              click : "del"
+                              click : del
                           }]
                       }
                    ]

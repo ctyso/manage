@@ -10,6 +10,9 @@
           $div.append( table );
           return $div;
       },
+      click:function( event ){
+    	  event();
+      },
       load:function( option ){
           // 控件上级的id
           var id = option.id;
@@ -53,7 +56,7 @@
                $.each( col.toolbar , function( index , e ){
                    // 保存点击操作
                    // 生成操作按钮并标识事件名为索引
-                   var a = $("<a class='layui-btn layui-btn-xs'>").html( e.text ).attr( "href" , "javaScript:" + e.click +"()");
+                   var a = $("<a class='layui-btn layui-btn-xs'>").html( e.text ).attr("onclick","datatable.click("+e.click+");");
                    // 添加按钮到索引块
                    script.append( a );
                } );
